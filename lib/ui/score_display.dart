@@ -1,7 +1,7 @@
 ﻿import 'package:flutter/material.dart';
 
 class ScoreDisplay extends StatelessWidget {
-  final int score;
+  final ValueNotifier<int> score;
 
   const ScoreDisplay({Key? key, required this.score}) : super(key: key);
   
@@ -10,12 +10,11 @@ class ScoreDisplay extends StatelessWidget {
     return Positioned(
         top: 20,
         left: 20,
-        child: Text(
-          'Score: $score',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-          ),
+        child: ValueListenableBuilder<int>(
+          valueListenable: score,
+          builder: (context, score, child) {
+            return Text('Score: $score', style: TextStyle(fontSize: 24, color: Colors.white));
+          },
         )
     );
   }

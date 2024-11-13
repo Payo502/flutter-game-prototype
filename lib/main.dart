@@ -5,7 +5,12 @@ import 'ui/score_display.dart';
 
 void main() {
   final game = MyGame();
-  runApp(GameWidget(game: game, overlayBuilderMap: {
-    'Score Display': (context, MyGame game) => ScoreDisplay(score: game.score),
-  }));
+  runApp(
+    GameWidget(
+      game: game,
+      overlayBuilderMap: {
+        'Score Display': (context, MyGame game) => ScoreDisplay(score: game.score),
+      },
+    ),
+  );
 }
