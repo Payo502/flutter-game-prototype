@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:prototype_game/components/collectible.dart';
 import '../states/player_state.dart';
 import 'package:flame/collisions.dart';
+import 'package:prototype_game/effects/collectibleEffects.dart';
 
 import 'enemy.dart';
 import '../my_game.dart';
@@ -50,6 +51,7 @@ class Player extends SpriteComponent
         gameRef.gameBloc.endGame();
       }
     } else if (other is Collectible) {
+      gameRef.add(CollectibleEffect(other.position));
       other.removeFromParent();
       gameRef.score.value += 1;
     }
